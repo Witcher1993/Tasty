@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.example.sadulla.tasty.Interface.ItemClickListener;
 
+import com.example.sadulla.tasty.R;
+
 
 
 
