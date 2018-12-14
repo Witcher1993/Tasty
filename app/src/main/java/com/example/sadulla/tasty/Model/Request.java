@@ -8,6 +8,7 @@ public class Request {
     private String name;
     private String address;
     private String total;
+    private String status;
     private List<Order> foods;
 
     public Request() {
@@ -19,6 +20,17 @@ public class Request {
         this.address = address;
         this.total = total;
         this.foods = foods;
+        this.status = "0"; //By default orders status is 0;
+            //Statuses: 0-Placed; 1-Shipping; 2-Shipped;
+
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getPhone() {
