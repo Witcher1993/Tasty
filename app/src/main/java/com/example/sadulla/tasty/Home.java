@@ -167,7 +167,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             //Logging out
             Intent signIn = new Intent(Home.this, SignIn.class);
-            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);// LOOK UP
             startActivity(signIn);
 
 
