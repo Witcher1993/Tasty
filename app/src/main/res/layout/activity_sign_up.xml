@@ -18,11 +18,10 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/sign_up_phone_edit"
-            android:hint="Phone number"
+            android:hint="@string/phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="998947777777"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="phone"
@@ -36,11 +35,10 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/sign_up_name_edit"
-            android:hint="Name"
+            android:hint="@string/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="Robert Dauni"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="text"
@@ -54,11 +52,10 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/sign_up_password_edit"
-            android:hint="Password"
+            android:hint="@string/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="ben123456"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="textPassword"

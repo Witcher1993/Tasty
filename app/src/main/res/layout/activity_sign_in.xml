@@ -18,11 +18,10 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/sign_in_phone_edit"
-            android:hint="Phone number"
+            android:hint="@string/phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="998946982813"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="phone"
@@ -36,11 +35,10 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/sign_in_password_edit"
-            android:hint="Password"
+            android:hint="@string/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="ben123456"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="textPassword"
