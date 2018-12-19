@@ -13,6 +13,7 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     public TextView foodName;
     public ImageView food_image;
+    public ImageView food_fav;
 
     private ItemClickListener itemClickListener;
 
@@ -27,6 +28,8 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
         foodName = (TextView)itemView.findViewById(R.id.food_name);
         food_image = (ImageView)itemView.findViewById(R.id.food_image);
+        food_fav = (ImageView)itemView.findViewById(R.id.food_item_fav);
+
 
         itemView.setOnClickListener(this);
     }

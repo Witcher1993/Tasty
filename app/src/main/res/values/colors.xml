@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#00251A</color>
     <color name="colorAccent">#39796B</color>
 
-    <color name="sign_up_button_color">#39796B</color>
-    <color name="sign_in_active_button_color">#A9D440</color>
+    <color name="sign_up_button_color">#2EC953</color>
+    <color name="sign_in_active_button_color">#004D40</color>
     
     <color name="overlay_background">#7F333639</color>
     <color name="overlay_action_bar">#0E0D0E</color>

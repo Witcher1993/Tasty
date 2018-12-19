@@ -4,54 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="#D6CFBC"
     tools:context=".MainActivity">
-    
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="129dp"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/slogan_text_view"
-            android:text="@string/slogan"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/slogan"
+            android:textColor="#123B38"
+            android:textSize="28sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:weightSum="2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/main_sign_up_button"
-            android:text="@string/sign_up"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:background="@color/sign_up_button_color"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:background="@color/sign_up_button_color"
+            android:text="@string/sign_up"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/main_sign_in_button"
-            android:text="@string/sign_in"
-            android:textSize="24sp"
-            android:textColor="@android:color/black"
-            android:background="@color/sign_in_active_button_color"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:background="@color/sign_in_active_button_color"
+            android:text="@string/sign_in"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
