@@ -14,4 +14,5 @@
     <string name="phone_number">Phone number</string>
     <string name="name">Name</string>
     <string name="refresh">Refresh</string>
+    <string name="remember">REMEMBER ME</string>
 </resources>

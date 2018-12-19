@@ -13,6 +13,9 @@ public class Common {
     public static final String DELETE = "Delete";
     //public static final String UPDATE = "Update"; Copied from ServerSide
 
+    public static final String USER_KEY="User";
+    public static final String PWD_KEY="Password";
+
     public static String convertCodeToStatus(String status) {
         if (status.equals("0"))
             return "Placed";

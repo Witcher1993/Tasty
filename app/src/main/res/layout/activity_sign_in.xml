@@ -50,6 +50,16 @@
 
             />
 
+        <CheckBox
+            android:id="@+id/remember_check_box"
+            android:text="@string/remember"
+            android:textSize="22sp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            />
+
     </LinearLayout>
 
     <Button

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.sadulla.tasty.Common.Common;
@@ -18,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import io.paperdb.Paper;
+
 //
 
 public class SignIn extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class SignIn extends AppCompatActivity {
     Button signInButton;
     MaterialEditText phoneEdit;
     MaterialEditText passwordEdit;
+    CheckBox rememberCkb;
 
 
 
@@ -39,9 +43,17 @@ public class SignIn extends AppCompatActivity {
 
         //
         signInButton = (Button)findViewById(R.id.sign_in_sign_in_button);
+        //
 
+        rememberCkb = (CheckBox)findViewById(R.id.remember_check_box);
 
         //
+        //Initialize Paper ==> open API to store current users login and password in NoSQL database
+        Paper.init(this);
+
+
+
+        //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
 
@@ -52,6 +64,14 @@ public class SignIn extends AppCompatActivity {
 
                 //CHECK WHETHER INTERNET CONNECTION IS VALID
                 if (Common.isConnectedToInternet(getBaseContext())) {
+
+                    //Save current Clients user and password
+                    if (rememberCkb.isChecked())
+                    {
+                        Paper.book().write(Common.USER_KEY, phoneEdit.getText().toString());
+                        Paper.book().write(Common.PWD_KEY, passwordEdit.getText().toString());
+                    }
+
 
                     final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                     mDialog.setMessage("WAIT...");
