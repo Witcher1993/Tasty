@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.sadulla.tasty.Common.Common;
 import com.example.sadulla.tasty.Interface.ItemClickListener;
 import com.example.sadulla.tasty.Model.Category;
+import com.example.sadulla.tasty.Service.ListenOrder;
 import com.example.sadulla.tasty.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -90,6 +91,10 @@ public class Home extends AppCompatActivity
 
         //method for loadin menu
         loadMenu();
+
+        //Register service
+        Intent service = new Intent(Home.this, ListenOrder.class);
+        startService(service);
 
 
     }
