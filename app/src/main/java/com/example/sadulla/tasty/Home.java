@@ -89,8 +89,16 @@ public class Home extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
-        //method for loadin menu
-        loadMenu();
+
+        //CHECK WHETHER INTERNET CONNECTION IS VALID
+        if(Common.isConnectedToInternet(this)) {
+            //method for loading menu
+            loadMenu();
+        }else
+        {
+            Toast.makeText(Home.this, "NO INTERNET!!!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         //Register service
         Intent service = new Intent(Home.this, ListenOrder.class);
@@ -147,6 +155,9 @@ public class Home extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        if (item.getItemId() == R.id.refresh)
+            loadMenu();
 
 
         return super.onOptionsItemSelected(item);

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.sadulla.tasty.Common.Common;
 import com.example.sadulla.tasty.Interface.ItemClickListener;
 import com.example.sadulla.tasty.Model.Food;
 import com.example.sadulla.tasty.ViewHolder.FoodViewHolder;
@@ -48,7 +49,14 @@ public class FoodList extends AppCompatActivity {
             categoryId = getIntent().getStringExtra("CategoryId");
         if(!categoryId.isEmpty() && categoryId != null)
         {
-            loadListFood(categoryId);
+            //CHECK WHETHER INTERNET CONNECTION IS VALID
+            if (Common.isConnectedToInternet(getBaseContext()))
+                loadListFood(categoryId);
+            else
+            {
+                Toast.makeText(FoodList.this, "NO INTERNET!!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
 

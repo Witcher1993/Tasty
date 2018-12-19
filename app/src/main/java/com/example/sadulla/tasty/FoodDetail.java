@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.sadulla.tasty.Common.Common;
 import com.example.sadulla.tasty.Database.Database;
 import com.example.sadulla.tasty.Model.Food;
 import com.example.sadulla.tasty.Model.Order;
@@ -88,7 +89,14 @@ public class FoodDetail extends AppCompatActivity {
 
         if(!foodId.isEmpty())
         {
-            getDetailFood(foodId);
+            //CHECK WHETHER INTERNET CONNECTION IS VALID
+            if (Common.isConnectedToInternet(getBaseContext()))
+                getDetailFood(foodId);
+            else
+            {
+                Toast.makeText(FoodDetail.this, "NO INTERNET!!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
     }

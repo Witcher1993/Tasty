@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.sadulla.tasty.Common.Common;
 import com.example.sadulla.tasty.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,36 +44,41 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("WAIT...");
-                mDialog.show();
+                //CHECK WHETHER INTERNET CONNECTION IS VALID
+                if(Common.isConnectedToInternet(getBaseContext())) {
 
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        //Chcek if user already exists
-                        if(dataSnapshot.child(phoneEdit.getText().toString()).exists())
-                        {
-                            mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Phone Number exists", Toast.LENGTH_SHORT).show();
+                    final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
+                    mDialog.setMessage("WAIT...");
+                    mDialog.show();
+
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            //Chcek if user already exists
+                            if (dataSnapshot.child(phoneEdit.getText().toString()).exists()) {
+                                mDialog.dismiss();
+                                Toast.makeText(SignUp.this, "Phone Number exists", Toast.LENGTH_SHORT).show();
+                            } else {
+                                mDialog.dismiss();
+                                User user = new User(nameEdit.getText().toString(), passwordEdit.getText().toString());
+                                table_user.child(phoneEdit.getText().toString()).setValue(user);
+                                Toast.makeText(SignUp.this, "You successfully registered", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+
                         }
-                        else
-                        {
-                            mDialog.dismiss();
-                            User user = new User(nameEdit.getText().toString(),passwordEdit.getText().toString());
-                            table_user.child(phoneEdit.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "You successfully registered", Toast.LENGTH_SHORT).show();
-                            finish();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
                         }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                    });
+                }else
+                {
+                    Toast.makeText(SignUp.this, "NO INTERNET!!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
             }
         });

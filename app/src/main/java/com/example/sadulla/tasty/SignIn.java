@@ -50,44 +50,50 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
-                mDialog.setMessage("WAIT...");
-                mDialog.show();
-                table_user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        //check user validation
-                        if(dataSnapshot.child(phoneEdit.getText().toString()).exists())
-                        {
-                            //Get User Information
-                            mDialog.dismiss();
-                            User user = dataSnapshot.child(phoneEdit.getText().toString()).getValue(User.class);
-                            user.setPhone(phoneEdit.getText().toString());//set phone number
-                            if (user.getPassword().equals(passwordEdit.getText().toString())) {
+                //CHECK WHETHER INTERNET CONNECTION IS VALID
+                if (Common.isConnectedToInternet(getBaseContext())) {
 
-                                Intent homeIntent = new Intent(SignIn.this, Home.class);
-                                Common.currentUser = user;
-                                startActivity(homeIntent);
-                                finish();
+                    final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
+                    mDialog.setMessage("WAIT...");
+                    mDialog.show();
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            //check user validation
+                            if (dataSnapshot.child(phoneEdit.getText().toString()).exists()) {
+                                //Get User Information
+                                mDialog.dismiss();
+                                User user = dataSnapshot.child(phoneEdit.getText().toString()).getValue(User.class);
+                                user.setPhone(phoneEdit.getText().toString());//set phone number
+                                if (user.getPassword().equals(passwordEdit.getText().toString())) {
 
+                                    Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                    Common.currentUser = user;
+                                    startActivity(homeIntent);
+                                    finish();
+
+                                } else {
+                                    Toast.makeText(SignIn.this, "FAIL", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
-                                Toast.makeText(SignIn.this, "FAIL", Toast.LENGTH_SHORT).show();
+                                mDialog.dismiss();
+                                Toast.makeText(SignIn.this, "User does not exists", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        else
-                        {
-                            mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User does not exists", Toast.LENGTH_SHORT).show();
+
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                        }
+                    });
+                }else
+                {
+                    Toast.makeText(SignIn.this, "NO INTERNET!!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
+
         });
 
 
